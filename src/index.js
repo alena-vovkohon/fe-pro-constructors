@@ -8,19 +8,22 @@ const userAlona = new User({
     name: 'Alona',
     date: new Date(2021, 1, 5),
     friends: [],
-    likes:[],
+    likes: [],
+    myBooks: [],
 });
 const userSasha = new User({
     name: 'Oleksander',
     date: new Date(2020, 10, 16),
     friends: [],
     likes: [],
+    myBooks: [],
 });
 const userDasha = new User({
     name: 'Dasha',
     date: new Date(2022, 2, 10),
     friends: [],
     likes: [],
+    myBooks: [],
 });
 
 // Add Friends
