@@ -7,23 +7,24 @@ import { Author } from './Author.js';
 const userAlona = new User({
     name: 'Alona',
     date: new Date(2021, 1, 5),
+    myBooks: [],
     friends: [],
     likes: [],
-    myBooks: [],
+    
 });
 const userSasha = new User({
     name: 'Oleksander',
     date: new Date(2020, 10, 16),
+    myBooks: [],
     friends: [],
     likes: [],
-    myBooks: [],
 });
 const userDasha = new User({
     name: 'Dasha',
     date: new Date(2022, 2, 10),
+    myBooks: [],
     friends: [],
     likes: [],
-    myBooks: [],
 });
 
 // Add Friends
@@ -37,18 +38,22 @@ userDasha.removeFriend(userAlona);
 const danielKeyes = new Author({
     name: "Daniel Keyes",
     dateOfBirth: new Date(1927, 7, 9),
+    books:[],
 });
 const willSmith = new Author({
     name: "Will Smith",
     dateOfBirth: new Date(1968, 8, 25),
+    books: [],
 });
 const walterIsaacson = new Author({
     name: "Walter Isaacson",
     dateOfBirth: new Date(1952, 4, 20),
+    books: [],
 });
 const bodoSchofer = new Author({
     name: "Bodo Schofer",
     dateOfBirth: new Date(1960, 8, 10),
+    books: [],
 });
 // Books
 const flowersForAlgernon = new Book({
