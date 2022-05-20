@@ -10,7 +10,7 @@ import { Book } from './Book.js';
  * @property {User[]} friends
  * @property {Book[]} likes
  */
-export function User({ name, date }) {
+export function User(name, date ) {
     this.name = name;
     this.date = date;
     this.myBooks = [];
