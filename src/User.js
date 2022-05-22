@@ -10,7 +10,7 @@ import { Book } from './Book.js';
  * @property {User[]} friends
  * @property {Book[]} likes
  */
-export function User( name, date ) {
+export function User({ name, date }) {
     this.name = name;
     this.date = date;
     this.myBooks = [];
@@ -20,8 +20,9 @@ export function User( name, date ) {
     
     Object.defineProperty(this, "publishedBooks", {
         get() {
+            let { myBooks } = this;
             let arr = []
-            Object.values(this.myBooks).filter(({ title }) => {
+            myBooks.filter(({ title }) => {
                 arr.push(title)
             })
             return arr.join(', ')
@@ -30,8 +31,9 @@ export function User( name, date ) {
 
     Object.defineProperty(this, "likedBooks", {
         get() {
+            let { likes } = this;
             let arr = []
-            Object.values(this.likes).filter(({ title }) => {
+            likes.filter(({ title }) => {
                 arr.push(title)
             })
             return arr.join(', ')
@@ -40,8 +42,9 @@ export function User( name, date ) {
 
     Object.defineProperty(this, "friendsNames", {
         get() {
+            let { friends } = this;
             let arr = []
-            Object.values(this.friends).filter(({ name }) => {
+            friends.filter(({ name }) => {
                 arr.push(name)
             })
             return arr.join(', ')

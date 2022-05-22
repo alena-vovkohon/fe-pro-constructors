@@ -13,7 +13,7 @@ import { User } from './User.js';
  * @property {User[]} likedUsers
  * @property {User} publicationBy
  */
-export function Book( title, year, publicationBy, authors ) {
+export function Book({ title, year, publicationBy, authors }) {
     this.title = title;
     this.year = year;
     this.publicationBy = publicationBy;
@@ -21,32 +21,37 @@ export function Book( title, year, publicationBy, authors ) {
     this.likedUsers = [];
 
     this.publicationBy.myBooks.push(this);
-    // this.authors.books.push(this);
     this.authors.forEach((author) => {
         author.books.push(this);
     });
-
+    
     this.publicationBy.likes.push(this);
     this.likedUsers.push(this.publicationBy);
 
     Object.defineProperty(this, "suggestedBooks", {
-        get() {
-            let arr = []
-            Object.values(this.authors.books).filter(({ title }) => {
-                arr.push(title)
-            })
-            return arr.join(', ')
-        }
-    });
     
-    Object.defineProperty(this, "suggestedPublicators", {
         get() {
-            let arr = []
-            Object.values(this.authors.books).filter(({ publicationBy}) => {
-                arr.push(publicationBy.name)
-            })
+            let { authors, title: titleThisAutor } = this;
+            let arr = [];
+            authors.map(({ books }) => books.forEach(({ title }) => {
+                if (title !== titleThisAutor) {
+                    arr.push(title)
+                }
+            }))
             return arr.join(', ')
         }
     });
 
+    Object.defineProperty(this, "suggestedPublicators", {
+        get() {
+            let { authors, publicationBy: publicationByThisAutor } = this;
+            let arr = [];
+            authors.map(({ books }) => books.forEach(({ publicationBy}) => {
+                if (publicationBy.name !== publicationByThisAutor.name) {
+                    arr.push(publicationBy.name)
+                }
+            }))
+            return arr.join(', ')
+        }
+    });
 }
