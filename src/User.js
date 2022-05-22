@@ -21,38 +21,25 @@ export function User( name, date ) {
     Object.defineProperty(this, "publishedBooks", {
         get() {
             let { myBooks } = this;
-            let arr = []
-            myBooks.filter(({ title }) => {
-                arr.push(title)
-            })
-            return arr.join(', ')
+            return myBooks.map(({ title }) => title).join(', ');
         }
     });
 
     Object.defineProperty(this, "likedBooks", {
         get() {
             let { likes } = this;
-            let arr = []
-            likes.filter(({ title }) => {
-                arr.push(title)
-            })
-            return arr.join(', ')
+            return likes.map(({ title }) => title).join(', ');
         }
     });
 
     Object.defineProperty(this, "friendsNames", {
         get() {
             let { friends } = this;
-            let arr = []
-            friends.filter(({ name }) => {
-                arr.push(name)
-            })
-            return arr.join(', ')
+            return friends.map(({ name }) => name).join(', ');
         }
     });
     // Add Friends
     this.addToFriends = function (friend) {
-
         if (this.friends.includes(friend)) {
             this.friends = this.friends.filter((itemFriend) => {
                 if (itemFriend !== friend) {
@@ -75,6 +62,8 @@ export function User( name, date ) {
             })
         }
     };
+
+  
     // Remove Friends
     this.removeFriend = this.addToFriends;
 

@@ -13,7 +13,7 @@ import { User } from './User.js';
  * @property {User[]} likedUsers
  * @property {User} publicationBy
  */
-export function Book( title, year, publicationBy, authors ) {
+export function Book(title, year, publicationBy, authors ) {
     this.title = title;
     this.year = year;
     this.publicationBy = publicationBy;
@@ -21,11 +21,10 @@ export function Book( title, year, publicationBy, authors ) {
     this.likedUsers = [];
 
     this.publicationBy.myBooks.push(this);
+    this.publicationBy.likes.push(this);
     this.authors.forEach((author) => {
         author.books.push(this);
     });
-    
-    this.publicationBy.likes.push(this);
     this.likedUsers.push(this.publicationBy);
 
     Object.defineProperty(this, "suggestedBooks", {
@@ -41,6 +40,7 @@ export function Book( title, year, publicationBy, authors ) {
             return arr.join(', ')
         }
     });
+
 
     Object.defineProperty(this, "suggestedPublicators", {
         get() {
