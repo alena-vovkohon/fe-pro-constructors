@@ -4,28 +4,28 @@ import { Author } from './Author.js';
 
 
 // User
-const userAlona = new User({
-    name: 'Alona',
-    date: new Date(2021, 1, 5),
-    myBooks: [],
-    friends: [],
-    likes: [],
+const userAlona = new User(
+    'Alona',
+    new Date(2021, 1, 5),
+    [],
+    [],
+    [],
     
-});
-const userSasha = new User({
-    name: 'Oleksander',
-    date: new Date(2020, 10, 16),
-    myBooks: [],
-    friends: [],
-    likes: [],
-});
-const userDasha = new User({
-    name: 'Dasha',
-    date: new Date(2022, 2, 10),
-    myBooks: [],
-    friends: [],
-    likes: [],
-});
+);
+const userSasha = new User(
+    'Oleksander',
+    new Date(2020, 10, 16),
+    [],
+    [],
+    [],
+);
+const userDasha = new User(
+    'Dasha',
+    new Date(2022, 2, 10),
+    [],
+    [],
+    [],
+);
 
 // Add Friends
 userAlona.addToFriends(userSasha);
@@ -35,70 +35,63 @@ userDasha.addToFriends(userAlona);
 userAlona.removeFriend(userSasha);
 
 // Author
-const danielKeyes = new Author({
-    name: "Daniel Keyes",
-    dateOfBirth: new Date(1927, 7, 9),
-    books:[],
-});
+const danielKeyes = new Author(
+   "Daniel Keyes",
+    new Date(1927, 7, 9),
+    [],
+);
 
-const willSmith = new Author({
-    name: "Will Smith",
-    dateOfBirth: new Date(1968, 8, 25),
-    books: [],
-});
-const walterIsaacson = new Author({
-    name: "Walter Isaacson",
-    dateOfBirth: new Date(1952, 4, 20),
-    books: [],
-});
-const bodoSchofer = new Author({
-    name: "Bodo Schofer",
-    dateOfBirth: new Date(1960, 8, 10),
-    books: [],
-});
+const willSmith = new Author(
+    "Will Smith",
+    new Date(1968, 8, 25),
+    [],
+);
+const walterIsaacson = new Author(
+    "Walter Isaacson",
+    new Date(1952, 4, 20),
+    [],
+);
+const bodoSchofer = new Author(
+    "Bodo Schofer",
+    new Date(1960, 8, 10),
+    [],
+);
 // Books
-const flowersForAlgernon = new Book({
-    title: "Flowers for Algernon",
-    year: new Date(1959, 0, 1),
-    publicationBy: userAlona,
-    authors: [danielKeyes],
-    likedUsers:[],
-});
-const theBillyMilligan = new Book({
-    title: "Множественные умы Билли Миллигана",
-    year: new Date(1981, 0, 1),
-    publicationBy: userSasha,
-    authors: [danielKeyes],
-    likedUsers: [],
-});
-const will = new Book({
-    title: "Will",
-    year: new Date(2021, 0,1),
-    publicationBy: userSasha,
-    authors: [willSmith],
-    likedUsers: [],
-});
-const steveJobs = new Book({
-    title: "Steve Jobs",
-    year: new Date(2011, 9, 24),
-    publicationBy: userAlona,
-    authors: [walterIsaacson],
-    likedUsers: [],
-});
-const namensMoney = new Book({
-    title: "Пес на ім'я Мані",
-    year: new Date(1999, 8, 1),
-    publicationBy: userDasha,
-    authors: [bodoSchofer],
-    likedUsers: [],
-});
-const financialFreedom = new Book({
-    title: "Шлях до фінансової свободи",
-    year: new Date(1918, 3, 1),
-    publicationBy: userSasha,
-    authors: [bodoSchofer],
-    likedUsers:[],
-});
+const flowersForAlgernon = new Book(
+     "Flowers for Algernon",
+    new Date(1959, 0, 1),
+    userAlona,
+    [danielKeyes],
+    [],
+);
+const theBillyMilligan = new Book(
+    "Множественные умы Билли Миллигана",
+    new Date(1981, 0, 1),
+    userSasha,
+    [danielKeyes],
+    [],
+);
+const will = new Book(
+    "Will",
+    new Date(2021, 0,1),
+    userSasha,
+    [willSmith],
+    [],
+);
+const namensMoney = new Book(
+    "Пес на ім'я Мані",
+    new Date(1999, 8, 1),
+    userDasha,
+    [bodoSchofer],
+    [],
+);
+const financialFreedom = new Book(
+    "Шлях до фінансової свободи",
+    new Date(1918, 3, 1),
+    userSasha,
+    [bodoSchofer],
+    [],
+);
 
 
 userSasha.likeBook(flowersForAlgernon)

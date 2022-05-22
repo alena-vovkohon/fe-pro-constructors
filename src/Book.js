@@ -13,7 +13,7 @@ import { User } from './User.js';
  * @property {User[]} likedUsers
  * @property {User} publicationBy
  */
-export function Book({ title, year, publicationBy, authors } ) {
+export function Book(title, year, publicationBy, authors=[]) {
     this.title = title;
     this.year = year;
     this.publicationBy = publicationBy;
