@@ -41,51 +41,57 @@ export function User(name, date) {
     // Add Friends
     this.addToFriends = function (friend) {
         if (this.friends.includes(friend)) {
-            this.friends = this.friends.filter((itemFriend) => {
-                if (itemFriend !== friend) {
-                    return itemFriend
-                } else {
-                    itemFriend.friends = itemFriend.friends.filter((myFriends) => {
-                        if (myFriends.name !== this.name) {
-                            return myFriends
-                        } 
-                     })
-                }
-            });
+            this.friends = this.friends.filter((itemFriend) => itemFriend !== friend);
+            friend.friends = friend.friends.filter((itemFriend) => itemFriend !== this);
+                // else {
+                //     itemFriend.friends = itemFriend.friends.filter((myFriends) => {
+                //         if (myFriends.name !== this.name) {
+                //             return myFriends
+                //         } 
+                //      })
+                // }
+            // });
            
         } else {
-            this.friends.push(friend)
-            this.friends.filter((itemFriend) => {
-                if (itemFriend === friend) {
-                   itemFriend.friends.push(this)
-                } 
-            })
+            this.friends.push(friend);
+            friend.friends.push(this);
+            // this.friends.filter((itemFriend) => {
+            //     if (itemFriend === friend) {
+            //        itemFriend.friends.push(this)
+            //     } 
+            // })
         }
+        
     };
+
     // Remove Friends
     this.removeFriend = this.addToFriends;
 
     // Add Like
     this.likeBook = function (book) {
         if (this.likes.includes(book)) {
-            this.likes = this.likes.filter((itemBook) => {
-                if (itemBook !== book) {
-                    return itemBook
-                } else {
-                    itemBook.likedUsers = itemBook.likedUsers.filter((myLikes) => {
-                        if (myLikes.name !== this.name) {
-                            return myLikes
-                        }
-                    })
-                }
-            });
+            this.likes = this.likes.filter((itemBook) => itemBook !== book);
+            book.likedUsers = book.likedUsers.filter((itemBook) => itemBook !== this);
+
+            // {
+            //     if (itemBook !== book) {
+            //         return itemBook
+            //     } else {
+            //         itemBook.likedUsers = itemBook.likedUsers.filter((myLikes) => {
+            //             if (myLikes.name !== this.name) {
+            //                 return myLikes
+            //             }
+            //         })
+            //     }
+            // });
         } else {
             this.likes.push(book);
-            this.likes.filter((itemBook) => {
-                if (itemBook === book) {
-                     return itemBook.likedUsers.push(this)
-                }
-            })
+            book.likedUsers.push(this);
+            // this.likes.filter((itemBook) => {
+            //     if (itemBook === book) {
+            //          return itemBook.likedUsers.push(this)
+            //     }
+            // })
         };
     }
     // Delete Like
