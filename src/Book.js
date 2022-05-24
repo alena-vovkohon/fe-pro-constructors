@@ -21,23 +21,21 @@ export function Book(title, year, publicationBy, authors=[]) {
     this.likedUsers = [];
 
     this.publicationBy.myBooks.push(this);
-    
     this.authors.forEach((author) => {
         author.books.push(this);
     });
-    
 
     Object.defineProperty(this, "suggestedBooks", {
     
         get() {
             let { authors, title: titleThisAutor } = this;
-            let arr = [];
+            let arrBook = [];
             authors.map(({ books }) => books.forEach(({ title }) => {
                 if (title !== titleThisAutor) {
-                    arr.push(title)
+                    arrBook.push(title)
                 }
             }))
-            return arr.join(', ')
+            return arrBook.join(', ')
         }
     });
 
@@ -45,13 +43,14 @@ export function Book(title, year, publicationBy, authors=[]) {
     Object.defineProperty(this, "suggestedPublicators", {
         get() {
             let { authors, publicationBy: publicationByThisAutor } = this;
-            let arr = [];
-            authors.map(({ books }) => books.forEach(({ publicationBy}) => {
+            let arrUser = [];
+            authors.map(({ books }) => books.forEach(({ publicationBy }) => {
+                
                 if (publicationBy.name !== publicationByThisAutor.name) {
-                    arr.push(publicationBy.name)
+                    arrUser.push(publicationBy.name)
                 }
             }))
-            return arr.join(', ')
+            return arrUser.join(', ')
         }
     });
 }
