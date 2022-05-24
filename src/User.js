@@ -20,22 +20,19 @@ export function User(name, date) {
     
     Object.defineProperty(this, "publishedBooks", {
         get() {
-            let { myBooks } = this;
-            return myBooks.map(({ title }) => title).join(', ');
+            return this.myBooks.map(({ title }) => title).join(', ');
         }
     });
 
     Object.defineProperty(this, "likedBooks", {
         get() {
-            let { likes } = this;
-            return likes.map(({ title }) => title).join(', ');
+            return this.likes.map(({ title }) => title).join(', ');
         }
     });
 
     Object.defineProperty(this, "friendsNames", {
         get() {
-            let { friends } = this;
-            return friends.map(({ name }) => name).join(', ');
+            return this.friends.map(({ name }) => name).join(', ');
         }
     });
 
