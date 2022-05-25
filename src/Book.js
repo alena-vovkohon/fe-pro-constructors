@@ -31,31 +31,27 @@ export function Book(title, year, publicationBy, authors=[]) {
             let arrBook = [];
             authors.map(({ books }) => books.forEach(({ title }) => {
                 if (title !== titleThisAutor) {
-                    arrBook.push(title)
+                    arrBook.push(title);
                 }
-            }))
-            let set = [...new Set(arrBook)]
+            }));
+            let set = [...new Set(arrBook)];
             return set.join(', ')
         }
     });
-
 
     Object.defineProperty(this, "suggestedPublicators", {
         get() {
             let { authors, publicationBy: publicationByThisAutor } = this;
             let arrUser = [];
 
-         authors.map(({ books }) => books.forEach(({ publicationBy }) => {
-
+            authors.map(({ books }) => books.forEach(({ publicationBy }) => {
                 if (publicationBy !== publicationByThisAutor) {
                     let { name } = publicationBy;
-                    arrUser.push(name)
+                    arrUser.push(name);
                 }
-            }))
-            let set = [...new Set(arrUser)]
+            }));
+            let set = [...new Set(arrUser)];
             return set.join(', ')
         }
     });
-
-   
 }
