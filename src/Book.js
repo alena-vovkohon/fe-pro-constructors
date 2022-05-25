@@ -30,12 +30,13 @@ export function Book(title, year, publicationBy, authors=[]) {
         get() {
             let { authors, title: titleThisAutor } = this;
             let arrBook = [];
-            authors.map(({ books }) => books.filter(({ title }) => {
+            authors.map(({ books }) => books.forEach(({ title }) => {
                 if (title !== titleThisAutor) {
                     arrBook.push(title)
                 }
             }))
-            return arrBook.join(', ')
+            let set = [...new Set(arrBook)]
+            return set.join(', ')
         }
     });
 
