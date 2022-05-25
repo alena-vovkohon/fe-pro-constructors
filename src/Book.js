@@ -30,7 +30,7 @@ export function Book(title, year, publicationBy, authors=[]) {
         get() {
             let { authors, title: titleThisAutor } = this;
             let arrBook = [];
-            authors.map(({ books }) => books.forEach(({ title }) => {
+            authors.map(({ books }) => books.filter(({ title }) => {
                 if (title !== titleThisAutor) {
                     arrBook.push(title)
                 }
@@ -44,13 +44,19 @@ export function Book(title, year, publicationBy, authors=[]) {
         get() {
             let { authors, publicationBy: publicationByThisAutor } = this;
             let arrUser = [];
-            authors.map(({ books }) => books.forEach(({ publicationBy }) => {
-                
-                if (publicationBy.name !== publicationByThisAutor.name) {
-                    arrUser.push(publicationBy.name)
+
+         authors.map(({ books }) => books.forEach(({ publicationBy }) => {
+
+                if (publicationBy !== publicationByThisAutor) {
+                    let { name } = publicationBy;
+                    arrUser.push(name)
                 }
-            }))
-            return arrUser.join(', ')
+            }
+            ))
+            let set = [...new Set(arrUser)]
+            return set.join(', ')
         }
     });
+
+   
 }
