@@ -26,7 +26,6 @@ export function Book(title, year, publicationBy, authors=[]) {
     });
 
     Object.defineProperty(this, "suggestedBooks", {
-    
         get() {
             let { authors, title: titleThisAutor } = this;
             let arrBook = [];
@@ -52,8 +51,7 @@ export function Book(title, year, publicationBy, authors=[]) {
                     let { name } = publicationBy;
                     arrUser.push(name)
                 }
-            }
-            ))
+            }))
             let set = [...new Set(arrUser)]
             return set.join(', ')
         }
